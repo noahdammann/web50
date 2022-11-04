@@ -1,0 +1,32 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!-- Add -->
+    <div id="add">
+        <form id="add_post_form">
+            <div class="form-group" id="textarea">
+                <label id="new_post_label" for="new_post_textarea" style="margin-top: 10px;">New post</label>
+                <textarea class="form-control" id="new_post_textarea" rows="3" placeholder="Tell the world"></textarea>
+                <input type="submit" value="Post" id="new_post_button" class="btn btn-primary" style="margin-top: 10px;">
+            </div>
+        </form>
+    </div>
+
+
+
+    <!-- Posts -->
+    <div id="posts">
+        
+    </div>
+
+
+    <!-- Profile -->
+    <div id="profile">
+        
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/feed.js' %}"></script>
+{% endblock %}

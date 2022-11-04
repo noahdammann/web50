@@ -1,0 +1,87 @@
+{% extends 'auctions/layout.html' %} 
+
+{% block body %}
+<h1>{{ titletest }}</h1>
+
+    {% if winner %}
+      <div class="alert alert-success" role="alert">
+        You have won this bid!
+      </div>
+    {% endif %}
+    {% if watchlist %}
+      <form action="{% url 'remove_from_watchlist' %}" method="post">
+      {% csrf_token %}
+        <input type="text" name="remove_from_watchlist" hidden value="{{ listing.pk }}">
+        <input type="submit" value="Remove from watchlist" class="btn btn-danger btn-lg btn-block" style="margin-top:20px;">
+      </form>
+    {% else %}
+      <form action="{% url 'watchlist' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="listing_id" hidden value="{{ listing.pk }}">
+        <input type="submit" value="Add to watchlist" class="btn btn-success btn-lg btn-block" style="margin-top:20px;">
+      </form>
+    {% endif %}
+
+
+<div class="card text-center">
+    <div class="card-header">
+      {{ listing.title }}
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">${{ listing.price }}</h5>
+      <p class="card-text">{{ listing.description }}</p>
+        {% if listing.status %}
+            <p class="card-text">This item is currently available</p>
+        {% else %}
+            <p class="card-text">Sorry this item is no longer available</p>
+        {% endif %}
+        {% if listing.category %}
+            <p class="card-text">Categories: {{ listing.category }}</p>
+        {% endif %}
+        <form action="{% url 'bid' %}" method="post">
+          {% csrf_token %}
+          <div class="form-group">
+            <label for="bid">Place a bid on this item</label>
+            <input type="number" min="{{ listing.price }}" id="bid" name="value" placeholder="{{ listing.price }}">
+            <input type="text" name="listing_id" hidden value="{{ listing.pk }}">
+            <input type="submit" class="btn btn-primary mb-2" value="Bid">
+          </div>
+        </form>
+      <img class="card-img-top" src="{{ listing.img_url }}" alt="{{ listing.title }}">
+    </div>
+    <div class="card-footer text-muted">
+      by: {{ listing.owner }}
+    </div>
+  </div>
+
+
+    {% if listing.owner == request.user and listing.status == True %}
+        <a href="{% url 'close' listing.pk %}"><button type="button" class="btn btn-danger btn-lg btn-block" style="margin-top:20px;">Close bidding</button></a>
+    {% endif %}
+
+  <form action="{% url 'listing' listing.pk %}" method="post" style="margin-top:20px;">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="comment">Comments:</label>
+        <input type="text" name="comment" class="form-control" id="comment" placeholder="Comment">
+    </div>
+    <button type="submit" class="btn btn-secondary">Add comment</button>
+  </form>
+
+    
+  
+    {% if user.is_authenticated %}
+    <ul>
+        {% for comment in comments %}
+            <div class="alert alert-success" role="alert" style="margin-top:20px">
+                {{ comment.creator }}: {{ comment.message }}
+            </div>
+        {% endfor %}
+      </ul>
+    {% else %}
+    <div class="alert alert-danger" role="alert" style="margin-top:20px">
+        Sign in to view comments
+    </div>
+    {% endif %}
+
+{% endblock %}

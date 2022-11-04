@@ -1,0 +1,16 @@
+{% extends 'auctions/layout.html' %}
+
+{% block body %}
+    <h1>Categories</h1>
+
+    {% for category in categories %}
+        <a href="{% url 'category' category.categoryName %}">
+        <div class="card text-center" style="width: 18rem; float:left;">
+            <img class="card-img-top" src="{{ category.image }}" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text">{{ category.categoryName }}</p>
+                </div>
+        </div>
+        </a>
+    {% endfor %}
+{% endblock %}

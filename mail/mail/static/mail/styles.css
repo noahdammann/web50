@@ -1,0 +1,79 @@
+textarea {
+    min-height: 400px;
+}
+
+.mailbox_div {
+    padding-left: 10px;
+    padding-right: 10px;
+    border: solid 1px #ebecf0;
+    height: 115px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#read {
+    background-color: #f5f5f5;
+}
+
+#unread {
+    background-color: white;
+}
+
+.mailbox_subject {
+    position: relative;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.mailbox_parties {
+    position: relative;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.mailbox_timestamp {
+    position: relative;
+    text-align: right;
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+.mailbox_body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+}
+
+#subject {
+    position: relative;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+}
+
+#parties {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    text-align: right;
+}
+
+#timestamp {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 17px;
+    margin-top: 25px;
+}
+
+#body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-top: 40px;
+}
+
+.function_button {
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}

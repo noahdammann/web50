@@ -1,0 +1,111 @@
+#textarea {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 22px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#new_post_textarea {
+    text-align: center;
+}
+
+#feed_name {
+    font-size: 25;
+}
+
+#posts {
+    margin-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#profile {
+    margin-top: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#profile_div {
+    position: relative;
+    width: 35%;
+    height: 265px;
+    padding-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 2px grey;
+}
+
+#follow_button {
+    margin-top: 15px;
+}
+
+.post_div {
+    background-color: #f5f5f5;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    width: 80%;
+}
+
+#own_profile_message {
+    margin-top: 30px;
+    font-family: sans-serif;
+}
+
+#post_creator {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #3366cc;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#post_creator_profile {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+#post_time {
+    font-family: sans-serif;
+    font-size: 15px;
+}
+
+#post_content {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+#page_nav {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+#page_ul {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    list-style: none; 
+}
+
+.page_li {
+    display: inline;
+    padding-left: 25px;
+    padding-right: 25px;
+    border: solid 1px #c1c1c1;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: blue;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#paging_header {
+    font-size: 20px;
+}

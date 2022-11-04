@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+
+        <!-- Navigation Menu -->
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Google Search</a></li>
+                </ul>
+            </nav>
+            <img id="smallimage" src="https://www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg">
+        </div>
+
+        <!-- Header -->
+        <div class="advheader">
+            <h3>Advanced Search</h3>
+        </div>
+
+        <!-- Body -->
+        <div class="advbody">
+            <h6>Find pages with...</h6>
+            <div>
+                <form action="https://google.com/search">
+                    <div class="option">
+                        <label>
+                            all these words:
+                            <input type="text" autofocus autocomplete="off" name="as_q">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label>
+                            this exact word or phrase:
+                            <input type="text" autocomplete="off" name="as_epq">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label>
+                            any of these words:
+                            <input type="text" autocomplete="off" name="as_oq">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <label>
+                            none of these words:
+                            <input type="text" autocomplete="off" name="as_eq">
+                        </label>
+                    </div>
+                    <div class="option">
+                        <input class="advsearchbutton" type="submit" value="Advanced Search">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

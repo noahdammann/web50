@@ -1,0 +1,203 @@
+.navbar {
+    height: 50px;
+    width: 100%;
+}
+
+.navbar ul {
+    list-style: none;
+    float: right;
+}
+
+.navbar li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: arial, sans-serif;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.main {
+    height: 350px;
+    width: 500px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.bottom {
+    position: absolute;
+    width: 600px;
+    height: 100px;
+    top: 57.5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+#searchbar {
+    border-radius: 25px;
+    width: 600px;
+    height: 37px;
+    border: solid 0.2px gainsboro;
+}
+
+#searchbar:focus {
+    outline: solid 0.2px gainsboro;
+}
+
+#searchbutton {
+    width: 120px;
+    height: 35px;
+    border: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+#searchbutton2 {
+    width: 120px;
+    height: 35px;
+    border: 0;
+    position: absolute;
+    top: 35%;
+    left: 61%;
+    transform: translate(-50%, -50%);
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+#searchbutton1 {
+    width: 120px;
+    height: 35px;
+    border: 0;
+    position: absolute;
+    top: 35%;
+    left: 39%;
+    transform: translate(-50%, -50%);
+    font-family: arial, sans-serif;
+    font-size: 14px;
+}
+
+#searchbutton1:hover {
+    border: solid 0.1px grey;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchbutton2:hover {
+    border: solid 0.1px grey;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchbutton:hover {
+    border: solid 0.1px grey;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#smallimage {
+    padding: 14px;
+}
+
+.advheader {
+    height: 60px;
+    width: 100%;
+    border-bottom: solid 1px gainsboro;
+}
+
+.advheader h3 {
+    color: #d93025;
+    font-size: 20px;
+    margin-left: 37px;
+    padding-top: 10px;
+    font-family: Arial, sans-serif;
+    font-weight: 100;
+}
+
+.advbody {
+    width: 100%;
+    height: 300px;
+    border-bottom: solid 1px gainsboro;
+    padding-top: 10px;
+}
+
+.advbody h6 {
+    font-weight: 100;
+    font-size: 16px;
+    font-family: arial, sans-serif;
+    margin-left: 37px;
+    margin-bottom: -1px;
+}
+
+label {
+    margin-left: 37px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+}
+
+.option {
+    display: block;
+    margin-top: 10px;
+    position: relative;
+    padding: 5px;
+}
+
+.option input[type="text"] {
+    position: absolute;
+    left: 1%;
+    margin-left: 210px;
+    width: 40%;
+    height: 26px;
+    border-radius: 1px;
+    border: solid 1px gainsboro;
+}
+
+.option input[type="text"]:focus {
+    outline: solid 0.2px blue;
+}
+
+
+.main input[type="text"] {
+    font-size: 16px;
+}
+
+.advsearchbutton {
+    position: relative;
+    left:45%;
+    background-color: #357ae8;
+    color: white;
+    font-family: arial, sans-serif;
+    border: solid 1px #3079ed;
+    height: 30px;
+    width: 120px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 11px;
+    margin-top: 15px;
+}
+
+.advsearchbutton:hover {
+    border: solid 1px blue;
+    border-radius: 4px;
+    cursor: pointer;
+}
