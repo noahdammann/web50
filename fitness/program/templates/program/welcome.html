@@ -1,0 +1,45 @@
+{% extends 'program/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+    Getting Started
+{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'program/authentication.css' %}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="center">
+    <h1>Let's get started!</h1>
+        <form method="post" action="{% url 'welcome' %}">
+            {% csrf_token %}
+            <div class="txt_field">
+                <input type="number" name="initial" required>
+                <label>Current weight</label>
+            </div>
+            <div class="txt_field" style="margin-bottom: -50px;">
+                <input type="number" name="goal" required>
+                <label>Target weight</label>
+            </div>
+            <div class="txt_field">
+                <input style="margin-top: 50px;"type="date" name="end_date" required>
+                <label>Deadline</label>
+            </div>
+            <div class="txt_field">
+                <label class="radio_label"><input type="radio" class="radio_input" required name="preference" value="metric"> Metric</label>
+                <label class="radio_label" id="last"><input type="radio" name="preference" class="radio_input" value="imperial"> Imperial</label>
+                <label id="preference">Preference</label>
+            </div>
+            {% if message %}
+                <div class="message">{{ message }}</div>
+            {% endif %}
+            <input type="submit" value="Let's go">
+            <div class="signup_link">
+            </div>
+        </form>
+    </div>
+{% endblock %}

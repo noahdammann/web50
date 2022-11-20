@@ -1,0 +1,52 @@
+{% extends 'program/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+    Profile
+{% endblock %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'program/profile.css' %}">
+{% endblock %}
+
+
+
+{% block body %}
+    <div class="profile_page_container">
+        <h1 id="profile_username">{{ username }}</h1>
+        <div id="profile_container">
+            <p id="profile_goal">Target weight: {{ goal }}</p>
+            <p id="profile_initial">Starting weight: {{ initial }}</p>
+            <p id="profile_current">Current weight: {{ current }}</p>
+            <p id="profile_start">Start date: {{ start_date }}</p>
+            <p id="profile_end">Target date: {{ end_date }}</p>
+            <p id="profile_preference">Preference: {% if preference %}metric{% else %}imperial{% endif %}</p>
+        </div>
+        <a id="profile_edit">Edit</a>
+    </div>
+
+
+    <script>
+        document.querySelector('#profile_edit').addEventListener('click', () => {
+            document.querySelector('#profile_edit').style.display = 'none';
+            document.querySelector('#profile_container').innerHTML = `
+                <form action="{% url 'profile' %}" method="post">
+                    {% csrf_token %}
+                    <p id="profile_goal">Target weight: <input type="number" value="{{ goal }}" name="goal"></p>
+                    <p id="profile_initial">Starting weight: <input type="number" value="{{ initial }}" name="initial"></p>
+                    <p id="profile_current">Current weight: <input type="number" value="{{ current }}" name="current"></p>
+                    <p id="profile_start">Start date: <input type="date" value="{{ start_date }}" name="start_date"></p>
+                    <p id="profile_end">Target date: <input type="date" value="{{ end_date }}" name="end_date"></p>
+                    <p id="profile_preference">Preference: <label><input type=radio name="preference" value="metric" {% if preference %}checked{% endif %}> metric</label><label><input type=radio name="preference" value="imperial" {% if preference %}{% else %}checked{% endif %}> imperial</label></p>
+                    <input type="submit" value="Save">
+                </form>
+            `;
+            
+        })
+
+        
+    </script>
+{% endblock %}

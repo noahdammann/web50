@@ -1,0 +1,54 @@
+{% extends 'program/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+    Register
+{% endblock %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'program/authentication.css' %}">
+{% endblock %}
+
+
+
+{% block body %}
+
+    <div class="center">
+        <h1>Register</h1>
+            <form method="post" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input type="text" name="username" required>
+                    <span></span>
+                    <label>Username</label>
+                </div>
+                <div class="txt_field">
+                    <input type="email" name="email" required>
+                    <span></span>
+                    <label>Email Address</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="password" required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" name="confirmation" required>
+                    <span></span>
+                    <label>Confirm Password</label>
+                </div>
+                {% if message %}
+                    <div class="message">{{ message }}</div>
+                {% endif %}
+                <input type="submit" value="Register">
+                <div class="signup_link">
+                    Already have an account? <a href="{% url 'login' %}">Login</a>
+                </div>
+            </form>
+        </div>
+
+
+{% endblock %}

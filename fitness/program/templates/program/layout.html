@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'program/styles.css' %}">
+        <script src="https://kit.fontawesome.com/8042263de2.js" crossorigin="anonymous"></script>
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <h1 id="logo"><i class="fa-solid fa-dumbbell"></i>MyFitness</h1>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'index' %}">Progress</a></li>
+                    <li><a href="{% url 'profile' %}">Profile</a></li>
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

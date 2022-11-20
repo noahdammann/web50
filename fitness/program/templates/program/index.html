@@ -1,0 +1,164 @@
+{% extends 'program/layout.html' %}
+{% load static %}
+
+
+{% block title %}
+    Program
+{% endblock %}
+
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'program/index.css' %}">
+    <style>
+        @keyframes load {
+            100% {
+                stroke-dashoffset: {{ distance }};
+            }
+        }
+        @keyframes load2 {
+            100% {
+                stroke-dashoffset: {{ distance_time }};
+            }
+        }
+    </style>
+{% endblock %}
+
+
+
+{% block body %}
+ 
+    <div class="index_page_container">
+
+            <h1 class="top top-1"">Target: <span id="goal">{{ goal }} {% if preference %}kgs{% else %}lbs{% endif %}</span></h1>
+
+        <div id="chart">
+            <div class="outer">
+                <div class="inner">
+                    <div id="number">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="200px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#e91e63" />
+                    <stop offset="100%" stop-color="#072ef2" />
+                </linearGradient>
+                </defs>
+                <circle id="circle1" cx="100" cy="100" r="87.6" stroke-linecap="round" />
+        </svg>
+        </div>
+
+
+        <h2 class="bottom bottom-1">Latest weight: <span id="current">{{ current }}</span></h2>
+        <p id="initial_weight">Initial weight: {{ initial }}</p>
+
+
+        <!-- 2nd column -->
+
+        <h1 class="top top-2">Deadline: <span id="end_date">{{ end_date }}</span></h1>
+
+        <div id="chart2">
+            <div class="outer">
+                <div class="inner">
+                    <div id="number2">
+                        
+                    </div>
+                </div>
+            </div>
+
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="200px" height="200px">
+                <defs>
+                <linearGradient id="GradientColor">
+                    <stop offset="0%" stop-color="#e91e63" />
+                    <stop offset="100%" stop-color="#072ef2" />
+                </linearGradient>
+                </defs>
+                <circle id="circle2" cx="100" cy="100" r="87.6" stroke-linecap="round" />
+        </svg>
+        </div>
+
+
+        <h2 class="bottom bottom-2">Days left: {{ days }}</h2>
+        <p id="initial_date">Started: {{ start_date }}</p>
+
+
+        <button id="edit">Edit</button>
+
+    </div>
+
+
+
+
+    <script>
+        
+        let number = document.querySelector('#number');
+        let counter = -1;
+        if ({{ percentage }} < 0) {
+            counter = -80;
+        }
+        setInterval(() => {
+            if (counter == {{ percentage }}) {
+                clearInterval();
+            } else {
+                counter += 1;
+                number.innerHTML = counter + '%';
+            }
+        }, {{ duration }})
+
+        let number2 = document.querySelector('#number2');
+        let counter2 = -1;
+        if ({{ percentage_time }} < 0) {
+            counter2 = -80;
+        }
+        setInterval(() => {
+            if (counter2 == {{ percentage_time }}) {
+                clearInterval();
+            } else {
+                counter2 += 1;
+                number2.innerHTML = counter2 + '%';
+            }
+        }, {{ duration_time }})
+
+
+        document.querySelector('#edit').addEventListener('click', () => {
+            document.querySelector('#initial_weight').style = 'margin-top: 17vh';
+            if (document.querySelector('#edit').innerHTML == "Edit") {
+                document.querySelector('#goal').innerHTML = `
+                    <form action="{% url 'update' %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" id="new_goal" value="{{ goal }}" name="goal">
+                    </form>
+                `;
+                document.querySelector('#current').innerHTML = `
+                    <form action="{% url 'update' %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" id="new_weight" value="{{ current }}" name="new_weight">
+                    </form>
+                `;
+                document.querySelector('#edit').innerHTML = "Save";
+            } else {
+                const new_goal = document.querySelector('#new_goal').value;
+                const new_weight = document.querySelector('#new_weight').value;
+
+                document.querySelector('#edit').innerHTML = "Edit";
+
+                fetch('/update', {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        new_goal: new_goal,
+                        new_weight: new_weight
+                    })
+                })
+                .then(() => {
+                    window.location.reload();
+                })
+            }
+        })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+.profile_page_container {
+    background-color: #e3edf7;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: 50%;
+    max-width: 600px;
+    margin: 15vh auto;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+#profile_container {
+    text-align: center;
+}
+
+#profile_username {
+    text-decoration: underline;
+    margin-bottom: 20px;
+    font-size: 2.3rem;
+}
+
+p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+#profile_edit {
+    color: #0066CC;
+    margin-top: 15px;
+}
+
+#profile_edit:hover {
+    color: #0066CC;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+input {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.78em;
+    border: 1px solid gray;
+    border-radius: 3px;
+    padding: 3px;
+}
+
+input[type="number"] {
+    width: 70px;
+    border-radius: 2px;
+}
+
+input[type="submit"] {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 50px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+input[type="radio"] {
+    margin-left: 15px;
+}
